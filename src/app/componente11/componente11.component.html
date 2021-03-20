@@ -1,0 +1,33 @@
+<h1>Pessoas</h1>
+<hr>
+<ul>
+  <li *ngFor="let p of pessoas" (click)="selecionar(p)">
+      <p [class.selecionado]="selecionado == p">{{p.nome}}</p>
+      <p *ngIf="selecionado == p">{{p.papel}}</p>
+      <button (click)="excluir(p)">
+        Excluir
+      </button>
+      <button (click)="editar(p)">
+        Editar
+    </button>
+  </li>
+</ul>
+<hr>
+<h1>Cadastrar Pessoa</h1>
+<form #cadastro="ngForm" [formGroup]="cadastro">
+    <div>
+        <label for="nome">Nome</label><br>
+        <input type="text" id="nome" name="nome" [(ngModel)]="nome" formControlName="nome" required>
+    </div>
+    <div>
+        <label for="papel">Papel</label><br>
+        <input type="text" id="papel" name="papel" [(ngModel)]="papel" formControlName="papel">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="salvar()" [disabled]="!cadastro.valid">
+        Salvar
+    </button>
+    <button type="reset" (click)="cancelar()">Cancelar</button>
+</form>
+
+<hr>
+<h1>Excluir Pessoa</h1>

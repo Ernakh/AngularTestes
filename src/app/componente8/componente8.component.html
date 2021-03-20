@@ -1,0 +1,23 @@
+<h1>Pessoas</h1>
+<hr>
+<ul>
+  <li *ngFor="let p of pessoas" (click)="selecionar(p)">
+      <p [class.selecionado]="selecionado == p">{{p.nome}}</p>
+      <p *ngIf="selecionado == p">{{p.papel}}</p>
+  </li>
+</ul>
+<hr>
+<h1>Cadastrar Pessoa</h1>
+<form [formGroup]="cadastro">
+    <div>
+        <label for="nome">Nome</label><br>
+        <input type="text" id="nome" name="nome" formControlName="nome" required>
+    </div>
+    <div>
+        <label for="papel">Papel</label><br>
+        <input type="text" id="papel" name="papel" formControlName="papel">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="salvar()" [disabled]="!cadastro.valid">
+        Salvar
+    </button>
+</form>

@@ -1,0 +1,8 @@
+<h1>Pessoas</h1>
+<hr>
+<ul>
+  <li *ngFor="let p of pessoas" (click)="selecionar(p)">
+      <p [class.selecionado]="selecionado == p">{{p.nome}}</p>
+      <p *ngIf="selecionado == p">{{p.papel}}</p>
+  </li>
+</ul>
